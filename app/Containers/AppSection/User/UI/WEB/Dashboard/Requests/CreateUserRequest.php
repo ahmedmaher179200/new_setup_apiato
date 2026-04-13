@@ -16,6 +16,7 @@ final class CreateUserRequest extends ParentRequest
             'name' => ['required', 'string', 'min:2', 'max:50'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['nullable', 'string', 'exists:roles,name'],
         ];
     }
 }

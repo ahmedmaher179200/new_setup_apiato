@@ -33,7 +33,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="password">{{ trans('dashboard.Password') }} <span class="text-danger">*</span></label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" {{ isset($data) ? '' : 'required' }}>
                 @error('password')
                     <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
@@ -42,8 +42,24 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="password_confirmation">{{ trans('dashboard.Confirm Password') }} <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                <label for="password_confirmation">{{ trans('dashboard.Confirm Password') }}</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="role">{{ trans('dashboard.Role') }}</label>
+                <select class="form-control select2 @error('role') is-invalid @enderror" id="role" name="role">
+                    @foreach(\App\Containers\AppSection\Role\Models\Role::where('guard_name', 'web')->get() as $role)
+                        <option value="{{ $role->name }}" {{ old('role', isset($data) && $data->roles ? $data->roles->first()?->name : '') === $role->name ? 'selected' : '' }}>
+                            {{ $role->display_name ?? $role->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('role')
+                    <span class="invalid-feedback d-block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
     </div>

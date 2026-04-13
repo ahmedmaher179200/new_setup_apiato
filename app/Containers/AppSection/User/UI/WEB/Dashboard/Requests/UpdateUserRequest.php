@@ -15,6 +15,8 @@ final class UpdateUserRequest extends ParentRequest
         return [
             'name' => ['string', 'min:2', 'max:50'],
             'email' => ['email', Rule::unique('users', 'email')->ignore($this->route('id'))],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'role' => ['nullable', 'string', 'exists:roles,name'],
         ];
     }
 }

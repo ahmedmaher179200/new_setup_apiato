@@ -13,8 +13,8 @@ final class CreateRoleAction extends ParentAction
     ) {
     }
 
-    public function run(string $name, string|null $description = null, string|null $displayName = null): Role
+    public function run($data): Role
     {
-        return $this->createRoleTask->run($name, $description, $displayName);
+        return $this->createRoleTask->run($data);
     }
 }

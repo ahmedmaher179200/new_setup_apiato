@@ -24,6 +24,15 @@ final class CreateUserTask extends ParentTask
             ],
         ))->validate();
 
-        return $this->repository->create($data);
+        $role = $data['role'] ?? null;
+        unset($data['role']);
+
+        $user = $this->repository->create($data);
+
+        if (!empty($role)) {
+            $user->syncRoles([$role]);
+        }
+
+        return $user;
     }
 }

@@ -33,10 +33,14 @@ final class UsersController extends WebController
                         $btn.= '</div></div>';
                         return $btn;
                     })
+                    ->addColumn('roles', function($row){
+                        $roles = $row->getRoleNames();
+                        return $roles->isNotEmpty() ? implode(', ', $roles->toArray()) : '-';
+                    })
                     ->addColumn('created_at', function($row){
                         return $row->created_at->format('Y-m-d');
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['action', 'roles'])
                     ->make(true);
         }
 

@@ -15,6 +15,20 @@ final class UpdateUserTask extends ParentTask
 
     public function run(int $id, array $properties): User
     {
-        return $this->repository->update($properties, $id);
+        $role = $properties['role'] ?? null;
+        unset($properties['role']);
+
+        // Don't update password if empty
+        if (isset($properties['password']) && empty($properties['password'])) {
+            unset($properties['password']);
+        }
+
+        $user = $this->repository->update($properties, $id);
+
+        if ($role !== null) {
+            $user->syncRoles([$role]);
+        }
+
+        return $user;
     }
 }

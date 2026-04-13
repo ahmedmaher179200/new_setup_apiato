@@ -30,6 +30,11 @@ final class User extends ParentUserModel
         'birth' => 'immutable_date',
     ];
 
+    public function getImage(){
+        return asset('uploads/users/default.jpg');
+    }
+
+
     public function newCollection(array $models = []): UserCollection
     {
         return new UserCollection($models);

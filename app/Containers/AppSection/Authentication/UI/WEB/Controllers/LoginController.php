@@ -7,6 +7,7 @@ use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Controllers\WebController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 final class LoginController extends WebController
 {
@@ -19,8 +20,12 @@ final class LoginController extends WebController
         );
     }
 
-    public function showForm(): View
+    public function showForm(): View|RedirectResponse
     {
+        if (Auth::check()) {
+            return redirect()->route('dashboard.home');
+        }
+
         return view('appSection@authentication::login');
     }
 }

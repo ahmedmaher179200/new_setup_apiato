@@ -21,6 +21,17 @@ final class ShipServiceProvider extends ParentServiceProvider
         UserModel::shouldBeStrict(!app()->isProduction());
     }
 
+    public function register(): void
+    {
+        $router = $this->app['router'];
+
+        $router->aliasMiddleware('localize', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class);
+        $router->aliasMiddleware('localizationRedirect', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class);
+        $router->aliasMiddleware('localeSessionRedirect', \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class);
+        $router->aliasMiddleware('localeCookieRedirect', \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class);
+        $router->aliasMiddleware('localeViewPath', \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class);
+    }
+
     public function registerMacros(): void
     {
         /*

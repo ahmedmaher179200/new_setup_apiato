@@ -38,6 +38,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('dashboard.users.index')}}" class="nav-link {{request()->is('*/users*')? 'active':''}}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                {{ trans('dashboard.Users') }}
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -3,8 +3,8 @@
 use Apiato\Foundation\Apiato;
 use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
+use App\Containers\AppSection\Dashboard\UI\WEB\Controllers\HomePageController;
 use App\Ship\Middleware\ValidateAppId;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -26,6 +26,11 @@ return Application::configure(basePath: $basePath)
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->use([
             ValidateAppId::class,
+        ]);
+        $middleware->web(append: [
+            'localeSessionRedirect',
+            'localizationRedirect',
+            'localeViewPath',
         ]);
         $middleware->api(append: [
             ValidateJsonContent::class,

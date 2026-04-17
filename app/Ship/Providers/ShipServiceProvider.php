@@ -9,6 +9,8 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 final class ShipServiceProvider extends ParentServiceProvider
 {
@@ -39,6 +41,18 @@ final class ShipServiceProvider extends ParentServiceProvider
          */
         Request::macro('appId', function (): string {
             return $this->header('App-Identifier', config()->string('apiato.defaults.app'));
+        });
+
+        /*
+         * Register a route group macro to automatically apply locale prefix to all routes.
+         */
+        Route::macro('localized', function (callable $callback): void {
+            Route::group(
+                [
+                    'prefix' => LaravelLocalization::setLocale(),
+                ],
+                $callback
+            );
         });
     }
 }

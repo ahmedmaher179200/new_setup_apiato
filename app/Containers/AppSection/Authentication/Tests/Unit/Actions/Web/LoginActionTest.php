@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Web;
 
 use App\Containers\AppSection\Authentication\Actions\Web\LoginAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
+use App\Containers\AppSection\Dashboard\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;

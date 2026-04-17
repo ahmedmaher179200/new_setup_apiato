@@ -3,8 +3,8 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\WEB;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\WebTestCase;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
+use App\Containers\AppSection\Dashboard\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

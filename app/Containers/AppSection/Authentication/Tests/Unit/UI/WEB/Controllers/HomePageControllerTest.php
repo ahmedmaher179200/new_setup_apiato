@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
+use App\Containers\AppSection\Dashboard\UI\WEB\Controllers\HomePageController;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(HomePageController::class)]

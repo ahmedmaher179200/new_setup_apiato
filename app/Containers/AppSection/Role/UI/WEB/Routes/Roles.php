@@ -8,11 +8,13 @@ use App\Containers\AppSection\Role\UI\WEB\Dashboard\Controllers\UpdateRoleContro
 use App\Containers\AppSection\Role\UI\WEB\Dashboard\Controllers\DestroyRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:web'])->group(function () {
-    Route::get('roles', IndexRoleController::class)->name('dashboard.roles.index');
-    Route::get('roles/create', CreateRoleController::class)->name('dashboard.roles.create');
-    Route::post('roles', StoreRoleController::class)->name('dashboard.roles.store');
-    Route::get('roles/{id}/edit', EditRoleController::class)->name('dashboard.roles.edit');
-    Route::put('roles/{id}', UpdateRoleController::class)->name('dashboard.roles.update');
-    Route::get('roles/{id}', DestroyRoleController::class)->name('dashboard.roles.destroy');
+Route::localized(function () {
+    Route::middleware(['auth:web'])->group(function () {
+        Route::get('roles', IndexRoleController::class)->name('dashboard.roles.index');
+        Route::get('roles/create', CreateRoleController::class)->name('dashboard.roles.create');
+        Route::post('roles', StoreRoleController::class)->name('dashboard.roles.store');
+        Route::get('roles/{id}/edit', EditRoleController::class)->name('dashboard.roles.edit');
+        Route::put('roles/{id}', UpdateRoleController::class)->name('dashboard.roles.update');
+        Route::get('roles/{id}', DestroyRoleController::class)->name('dashboard.roles.destroy');
+    });
 });

@@ -34,9 +34,9 @@
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="" class="dropdown-item">
+          {{-- <a href="" class="dropdown-item">
             {{ trans('dashboard.Profile') ?? trans('admin.Profile') }}
-          </a>
+          </a> --}}
           <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" class="hidden">@csrf</form>
           <button type="submit" form="logout-form" class="dropdown-item" style="width: 100%; text-align: left; background: none; border: none; padding: 0.5rem 1rem; cursor: pointer;">
             {{ trans('dashboard.Logout') ?? trans('admin.logout') }}

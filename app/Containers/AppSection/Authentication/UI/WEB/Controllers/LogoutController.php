@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\Web\LogoutAction;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LogoutRequest;
+use App\Containers\AppSection\Dashboard\UI\WEB\Controllers\HomePageController;
 use App\Ship\Parents\Controllers\WebController;
 use Illuminate\Http\RedirectResponse;
 

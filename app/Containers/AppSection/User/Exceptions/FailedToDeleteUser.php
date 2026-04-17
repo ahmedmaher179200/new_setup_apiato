@@ -11,4 +11,9 @@ final class FailedToDeleteUser extends ParentHttpException
     {
         return new self(Response::HTTP_UNPROCESSABLE_ENTITY, 'You cannot delete yourself.');
     }
+
+    public static function becauseCannotDeleteSystemUser(): self
+    {
+        return new self(Response::HTTP_UNPROCESSABLE_ENTITY, 'Cannot delete the system user.');
+    }
 }

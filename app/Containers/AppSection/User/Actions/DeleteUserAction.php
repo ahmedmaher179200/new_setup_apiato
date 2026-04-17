@@ -15,6 +15,11 @@ final class DeleteUserAction extends ParentAction
 
     public function run(int $id): bool
     {
+        // Prevent deletion of the first system user (id = 1)
+        if ($id === 1) {
+            throw FailedToDeleteUser::becauseCannotDeleteSystemUser();
+        }
+
         $user = $this->repository->findById($id);
 
         if (auth()->user()?->is($user)) {

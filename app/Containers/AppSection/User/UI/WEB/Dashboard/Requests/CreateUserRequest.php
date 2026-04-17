@@ -19,4 +19,9 @@ final class CreateUserRequest extends ParentRequest
             'role' => ['nullable', 'string', 'exists:roles,name'],
         ];
     }
+
+    public function authorize(): bool
+    {
+        return auth()->user()->can('users.create');
+    }
 }

@@ -19,4 +19,9 @@ final class UpdateUserRequest extends ParentRequest
             'role' => ['nullable', 'string', 'exists:roles,name'],
         ];
     }
+
+    public function authorize(): bool
+    {
+        return auth()->user()->can('users.update');
+    }
 }

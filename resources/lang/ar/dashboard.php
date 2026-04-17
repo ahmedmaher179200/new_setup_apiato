@@ -56,5 +56,26 @@ return [
     'add' => 'إضافة',
     'delete' => 'مسح',
     'Alert' => 'Alert',
-    'Are you sure about this procedure' => 'Are you sure about this procedure'
+    'Are you sure about this procedure' => 'Are you sure about this procedure',
+    'Permission' => 'صلاحية',
+    'Permissions' => 'الصلاحيات',
+    'No permissions available' => 'لا توجد صلاحيات متاحة',
+    // User Permissions
+    'users.create' => 'إنشاء مستخدم',
+    'users.read' => 'عرض المستخدم',
+    'users.update' => 'تعديل المستخدم',
+    'users.delete' => 'حذف المستخدم',
+    'users.list' => 'عرض قائمة المستخدمين',
+    // Role Permissions
+    'roles.create' => 'إنشاء دور',
+    'roles.read' => 'عرض الدور',
+    'roles.update' => 'تعديل الدور',
+    'roles.delete' => 'حذف الدور',
+    'roles.list' => 'عرض قائمة الأدوار',
+    // Permission Permissions
+    'permission.create' => 'إنشاء صلاحية',
+    'permission.read' => 'عرض الصلاحية',
+    'permission.update' => 'تعديل الصلاحية',
+    'permission.delete' => 'حذف الصلاحية',
+    'permission.list' => 'عرض قائمة الصلاحيات',
 ];

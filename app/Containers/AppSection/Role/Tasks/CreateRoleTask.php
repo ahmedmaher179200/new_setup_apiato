@@ -13,13 +13,14 @@ final class CreateRoleTask extends Task
     ) {
     }
 
-    public function run(string $name, string|null $description = null, string|null $displayName = null): Role
+    public function run(array $data): Role
     {
-        return $this->repository->create([
-            'name' => $name,
-            'guard_name' => auth()->activeGuard(),
-            'display_name' => $displayName,
-            'description' => $description,
-        ]);
+        // Remove permissions as it's handled separately by syncPermissions
+        unset($data['permissions']);
+
+        $data['name'] = strtolower($data['name'] ?? '');
+        $data['guard_name'] = $data['guard_name'] ?? auth()->activeGuard();
+
+        return $this->repository->create($data);
     }
 }

@@ -3,19 +3,23 @@
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Enums\Role;
-use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
+use App\Containers\AppSection\Authorization\Models\Role as RoleModel;
 use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
 final class AuthorizationSeeder_1 extends ParentSeeder
 {
-    public function run(CreateRoleTask $task): void
+    public function run(): void
     {
         foreach (array_keys(config('auth.guards')) as $guardName) {
-            $task->run(
-                Role::SUPER_ADMIN->value,
-                'Administrator',
-                Role::SUPER_ADMIN->label(),
-                $guardName,
+            RoleModel::firstOrCreate(
+                [
+                    'name' => strtolower(Role::SUPER_ADMIN->value),
+                    'guard_name' => $guardName,
+                ],
+                [
+                    'display_name' => Role::SUPER_ADMIN->label(),
+                    'description' => 'Administrator',
+                ]
             );
         }
     }

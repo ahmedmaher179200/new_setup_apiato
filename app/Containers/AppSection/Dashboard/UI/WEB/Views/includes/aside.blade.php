@@ -30,31 +30,36 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{route('dashboard.home')}}" class="nav-link {{request()->is('*/dashboard')? 'active':''}}">
+            <a href="{{route('dashboard.home')}}" class="nav-link {{request()->routeIs('dashboard.home')? 'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 {{ trans('dashboard.Dashboard') }}
               </p>
             </a>
           </li>
+          @if (auth()->user()->can('roles.list'))
+            <li class="nav-item">
+              <a href="{{route('dashboard.roles.index')}}" class="nav-link {{ request()->routeIs('*.roles.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user-tag"></i>
+                <p>
+                  {{ trans('dashboard.Roles') }}
+                </p>
+              </a>
+            </li>
+          @endif
 
-          <li class="nav-item">
-            <a href="{{route('dashboard.users.index')}}" class="nav-link {{ request()->routeIs('*.users.*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                {{ trans('dashboard.Users') }}
-              </p>
-            </a>
-          </li>
+          @if (auth()->user()->can('users.list'))
+            <li class="nav-item">
+              <a href="{{route('dashboard.users.index')}}" class="nav-link {{ request()->routeIs('*.users.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  {{ trans('dashboard.Users') }}
+                </p>
+              </a>
+            </li>
+          @endif
 
-          <li class="nav-item">
-            <a href="{{route('dashboard.roles.index')}}" class="nav-link {{ request()->routeIs('*.roles.*') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-user-tag"></i>
-              <p>
-                {{ trans('dashboard.Roles') }}
-              </p>
-            </a>
-          </li>
+
 
         </ul>
       </nav>

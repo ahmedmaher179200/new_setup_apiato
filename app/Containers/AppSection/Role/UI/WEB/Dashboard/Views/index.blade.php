@@ -25,7 +25,9 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
+            @if (auth()->user()->can('roles.create'))
               <a href="{{route('dashboard.roles.create')}}" type="button" class="btn btn-info">{{ trans('dashboard.add') }}</a>
+            @endif
           </div>
           <!-- /.card-header -->
           <div class="card-body">

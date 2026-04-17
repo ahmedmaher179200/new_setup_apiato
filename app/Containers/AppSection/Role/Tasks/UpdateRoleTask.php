@@ -15,6 +15,9 @@ final class UpdateRoleTask extends Task
 
     public function run(Role $role, array $data): Role
     {
+        // Remove permissions as it's handled separately by syncPermissions
+        unset($data['permissions']);
+
         $role->update($data);
         return $role;
     }

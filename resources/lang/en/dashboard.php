@@ -56,5 +56,26 @@ return [
     'add' => 'Add',
     'delete' => 'delete',
     'Alert' => 'Alert',
-    'Are you sure about this procedure' => 'Are you sure about this procedure'
+    'Are you sure about this procedure' => 'Are you sure about this procedure',
+    'Permission' => 'Permission',
+    'Permissions' => 'Permissions',
+    'No permissions available' => 'No permissions available',
+    // User Permissions
+    'users.create' => 'Create User',
+    'users.read' => 'Read User',
+    'users.update' => 'Update User',
+    'users.delete' => 'Delete User',
+    'users.list' => 'List Users',
+    // Role Permissions
+    'roles.create' => 'Create Role',
+    'roles.read' => 'Read Role',
+    'roles.update' => 'Update Role',
+    'roles.delete' => 'Delete Role',
+    'roles.list' => 'List Roles',
+    // Permission Permissions
+    'permission.create' => 'Create Permission',
+    'permission.read' => 'Read Permission',
+    'permission.update' => 'Update Permission',
+    'permission.delete' => 'Delete Permission',
+    'permission.list' => 'List Permissions',
 ];
